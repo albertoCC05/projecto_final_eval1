@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Good Coin
+  - Bad_Coin
+  - Good_Coin
   layers:
   - Default
   - TransparentFX

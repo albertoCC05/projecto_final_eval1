@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     private float verticalBounds = 3.83f;
     private float horizontalBounds = 7.9f;
     
+    
+
+    
 
     //funciones
 
@@ -28,17 +31,26 @@ public class PlayerController : MonoBehaviour
         {
             pos.z = -verticalBounds;
         }
-
+        if (pos.x > horizontalBounds)
+        {
+            pos.x = horizontalBounds;
+        }
+        if (pos.x < -horizontalBounds)
+        {
+            pos.x = -horizontalBounds;
+        }
         transform.position = pos;
     }
 
     private void MoveForward()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime * verticalInput);
+        
     }
     private void Rotation()
     {
         transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime * horizontalInput);
+        
     }
 
 
@@ -48,6 +60,7 @@ public class PlayerController : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
+       
 
         MoveForward();
         Rotation();

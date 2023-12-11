@@ -12,10 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     private float verticalBounds = 3.83f;
     private float horizontalBounds = 7.9f;
-    
-    
+    private DetectColisionCoins gameOverScript;
 
-    
+
+
+
 
     //funciones
 
@@ -56,15 +57,25 @@ public class PlayerController : MonoBehaviour
 
     //start/ update
 
+
+    private void Start()
+    {
+        gameOverScript = FindObjectOfType<DetectColisionCoins>();
+    }
+
     private void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
        
+        if (gameOverScript.isGameOver == false)
+        {
+            MoveForward();
+            Rotation();
+            PlayerInBounds();
+        }
 
-        MoveForward();
-        Rotation();
-        PlayerInBounds();
+        
 
 
     }

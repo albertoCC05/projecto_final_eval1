@@ -43,7 +43,14 @@ public class DetectColisionCoins : MonoBehaviour
             Instantiate(death, transform.position, Quaternion.identity);
            PlayerAudioSource.PlayOneShot(DeathAudio,0.6f);
         }
+       if (points == 50)
+        {
+            isGameOver = true;
+            Debug.Log("you win");
+            
+        }
     }
+
 
     //start, update, etc
 
@@ -79,6 +86,7 @@ public class DetectColisionCoins : MonoBehaviour
             Instantiate(goodCoin, transform.position, Quaternion.identity);
             Debug.Log($"You have {points} points");
             PlayerAudioSource.PlayOneShot(getGoodCoin,0.6f);
+            GameOver();
 
 
         }
